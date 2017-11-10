@@ -53,7 +53,8 @@ fi
 
 sudo add-apt-repository ppa:jonathonf/python-3.6 -y
 sudo apt update
-sudo apt install linux-headers-$(uname -r) python3.6 build-essential libssl-dev git nginx awscli -y
+# sudo apt install linux-headers-$(uname -r) python3.6 build-essential libssl-dev git nginx awscli -y
+sudo apt install python3.6 keepalived git nginx awscli -y
 
 sudo apt dist-upgrade -y
 sudo apt autoremove -y
@@ -114,19 +115,19 @@ echo aws_secret_access_key=$AWS_SECRET_ACCESS_KEY>> ~/.aws/credentials
 
 # Keepalived
 
-cd
-wget http://www.keepalived.org/software/keepalived-1.3.9.tar.gz
-rm -rf keepalived-1.3.9
-tar xf keepalived-1.3.9.tar.gz
-rm -rf keepalived-1.3.9.tar.gz
-cd keepalived-1.3.9
-./configure
-make
-sudo make install
-
-sudo cp /home/ubuntu/infra/backend/keepalived /etc/init.d/keepalived
-sudo /etc/init.d/keepalived start
-sudo update-rc.d keepalived defaults
+# cd
+# wget http://www.keepalived.org/software/keepalived-1.3.9.tar.gz
+# rm -rf keepalived-1.3.9
+# tar xf keepalived-1.3.9.tar.gz
+# rm -rf keepalived-1.3.9.tar.gz
+# cd keepalived-1.3.9
+# ./configure
+# make
+# sudo make install
+#
+# sudo cp /home/ubuntu/infra/backend/keepalived /etc/init.d/keepalived
+# sudo /etc/init.d/keepalived start
+# sudo update-rc.d keepalived defaults
 
 sudo mkdir -p /etc/keepalived
 

@@ -22,20 +22,28 @@ sudo pip3.6 install virtualenv
 # Git, Django, & Setup
 
 cd /home/ubuntu
+rm -rf backend
 git clone https://github.com/gymapplife/backend.git
 cd backend
 ./scripts/setup.sh
 source venv/bin/activate
-source /home/ubuntu/infra/backend/env
+cd backend
+export DJANGO_DEBUG=TRUE
+python manage.py collectstatic
 
 
 # Systemd
 
 sudo cp /home/ubuntu/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
 sudo systemctl daemon-reload
-sudo systemctl start gunicorn
+sudo systemctl restart gunicorn
 sudo systemctl enable gunicorn
 
 # Nginx
 
 sudo ufw allow 'Nginx Full'
+
+sudo cp /home/ubuntu/infra/backend/nginx /etc/nginx/sites-available/gymapplife
+sudo ln -sf /etc/nginx/sites-available/gymapplife /etc/nginx/sites-enabled
+rm -rf /etc/nginx/sites-enabled/default
+sudo systemctl restart nginx

@@ -20,6 +20,7 @@ sudo pip3.6 install virtualenv
 
 # Git, Django, & Setup
 
+cd /home/ubuntu
 git clone https://github.com/gymapplife/backend.git
 cd backend
 ./scripts/setup.sh
@@ -28,7 +29,7 @@ source /home/ubuntu/infra/backend/env
 echo $RDS_USERNAME
 
 # Systemd
-cp gunicorn.service /etc/systemd/system/gunicorn.service
+cp /home/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
 sudo systemctl daemon-reload
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn

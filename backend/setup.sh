@@ -106,7 +106,7 @@ sudo systemctl restart nginx
 
 mkdir -p ~/.aws
 echo [default]> ~/.aws/config
-echo region = us-east-1>> ~/.aws/config
+echo region=us-east-1>> ~/.aws/config
 
 echo [default]> ~/.aws/credentials
 echo aws_access_key_id=$AWS_ACCESS_KEY_ID>> ~/.aws/credentials

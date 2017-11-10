@@ -27,12 +27,11 @@ cd backend
 ./scripts/setup.sh
 source venv/bin/activate
 source /home/ubuntu/infra/backend/env
-echo $RDS_USERNAME
 
 
 # Systemd
 
-sudo cp /home/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
+sudo cp /home/ubuntu/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
 sudo systemctl daemon-reload
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn

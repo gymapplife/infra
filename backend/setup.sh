@@ -123,7 +123,12 @@ cd keepalived-1.3.9
 ./configure
 make
 sudo make install
-sudo cp keepalived/etc/init.d/keepalived /etc/init.d/keepalived
+
+sudo cp /home/ubuntu/infra/backend/keepalived /etc/init.d/keepalived
+sudo /etc/init.d/keepalived start
+sudo update-rc.d keepalived defaults
+
+sudo mkdir -p /etc/keepalived
 
 sudo cp /home/ubuntu/infra/backend/master.sh /etc/keepalived/master.sh
 sudo sed -i -e "s/EIP/${EIP}/g" /etc/keepalived/master.sh

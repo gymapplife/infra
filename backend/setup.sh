@@ -130,15 +130,15 @@ sudo sed -i -e "s/EIP/${EIP}/g" /etc/keepalived/master.sh
 sudo sed -i -e "s/INSTANCE_ID/${INSTANCE_ID}/g" /etc/keepalived/master.sh
 
 sudo cp /home/ubuntu/infra/backend/keepalived.conf /etc/keepalived/keepalived.conf
-sudo sed -i -e "s/SRC_IP/${SRC_IP}/g" /etc/keepalived/master.sh
-sudo sed -i -e "s/PEER_IP/${PEER_IP}/g" /etc/keepalived/master.sh
+sudo sed -i -e "s/SRC_IP/${SRC_IP}/g" /etc/keepalived/keepalived.conf
+sudo sed -i -e "s/PEER_IP/${PEER_IP}/g" /etc/keepalived/keepalived.conf
 
 if [ "$TYPE" = "MASTER" ]; then
-  sudo sed -i -e "s/MASTER_OR_BACKUP/MASTER/g" /etc/keepalived/master.sh
-  sudo sed -i -e "s/PRIORITY/101/g" /etc/keepalived/master.sh
+  sudo sed -i -e "s/MASTER_OR_BACKUP/MASTER/g" /etc/keepalived/keepalived.conf
+  sudo sed -i -e "s/PRIORITY/101/g" /etc/keepalived/keepalived.conf
 else
-  sudo sed -i -e "s/MASTER_OR_BACKUP/BACKUP/g" /etc/keepalived/master.sh
-  sudo sed -i -e "s/PRIORITY/100/g" /etc/keepalived/master.sh
+  sudo sed -i -e "s/MASTER_OR_BACKUP/BACKUP/g" /etc/keepalived/keepalived.conf
+  sudo sed -i -e "s/PRIORITY/100/g" /etc/keepalived/keepalived.conf
 fi
 
 sudo service keepalived restart

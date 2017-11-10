@@ -116,6 +116,7 @@ echo aws_secret_access_key=$AWS_SECRET_ACCESS_KEY>> ~/.aws/credentials
 
 cd
 wget http://www.keepalived.org/software/keepalived-1.3.9.tar.gz
+rm -rf keepalived-1.3.9
 tar xf keepalived-1.3.9.tar.gz
 rm -rf keepalived-1.3.9.tar.gz
 cd keepalived-1.3.9

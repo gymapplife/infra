@@ -18,6 +18,7 @@ rm get-pip.py
 
 sudo pip3.6 install virtualenv
 
+
 # Git, Django, & Setup
 
 cd /home/ubuntu
@@ -28,8 +29,10 @@ source venv/bin/activate
 source /home/ubuntu/infra/backend/env
 echo $RDS_USERNAME
 
+
 # Systemd
-cp /home/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
+
+sudo cp /home/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
 sudo systemctl daemon-reload
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn

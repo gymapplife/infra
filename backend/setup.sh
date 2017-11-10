@@ -97,7 +97,7 @@ sudo ufw allow 'Nginx Full'
 
 sudo cp /home/ubuntu/infra/backend/nginx /etc/nginx/sites-available/gymapplife
 sudo ln -sf /etc/nginx/sites-available/gymapplife /etc/nginx/sites-enabled
-rm -rf /etc/nginx/sites-enabled/default
+sudo rm -rf /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
 
 

@@ -3,7 +3,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-EnvironmentFile=/home/ubuntu/infra/backend/env
+EnvironmentFile=/home/ubuntu/env
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/backend/backend

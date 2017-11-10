@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+EnvironmentFile=/home/ubuntu/infra/backend/env
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/backend/backend
+ExecStart=/home/ubuntu/backend/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/backend/backend/backend.sock backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

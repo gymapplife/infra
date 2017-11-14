@@ -86,8 +86,8 @@ python manage.py collectstatic
 # Systemd
 
 echo DJANGO_DEBUG=FALSE> /home/ubuntu/env
-RDS_PASSWORD=$RDS_PASSWORD>> /home/ubuntu/env
-RDS_HOSTNAME=$RDS_HOSTNAME>> /home/ubuntu/env
+echo RDS_PASSWORD=$RDS_PASSWORD>> /home/ubuntu/env
+echo RDS_HOSTNAME=$RDS_HOSTNAME>> /home/ubuntu/env
 echo "DJANGO_SECRET_KEY='$(django_secret)'">> /home/ubuntu/env
 
 sudo cp /home/ubuntu/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service

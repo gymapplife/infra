@@ -49,6 +49,10 @@ if [ "$TYPE" != "MASTER" ] && [ "$TYPE" != "BACKUP" ]; then
 fi
 
 
+# https://gist.github.com/ndarville/3452907
+function django_secret() { python -c "import random,string;print(''.join([random.SystemRandom().choice(\"{}{}{}\".format(string.ascii_letters, string.digits, string.punctuation)) for i in range(63)]).replace('\\'','\\'\"\\'\"\\''))"; }
+
+
 # Dependencies
 
 sudo add-apt-repository ppa:jonathonf/python-3.6 -y
@@ -81,9 +85,10 @@ python manage.py collectstatic
 
 # Systemd
 
-cp /home/ubuntu/infra/backend/env /home/ubuntu/env
-sed -i -e "s/RDS_PASSWORD=/RDS_PASSWORD=${RDS_PASSWORD}/g" /home/ubuntu/env
-sed -i -e "s/RDS_HOSTNAME=/RDS_HOSTNAME=${RDS_HOSTNAME}/g" /home/ubuntu/env
+echo DJANGO_DEBUG=FALSE> /home/ubuntu/env
+RDS_PASSWORD=$RDS_PASSWORD>> /home/ubuntu/env
+RDS_HOSTNAME=$RDS_HOSTNAME>> /home/ubuntu/env
+echo "DJANGO_SECRET_KEY='$(django_secret)'">> /home/ubuntu/env
 
 sudo cp /home/ubuntu/infra/backend/gunicorn.service /etc/systemd/system/gunicorn.service
 sudo systemctl daemon-reload
